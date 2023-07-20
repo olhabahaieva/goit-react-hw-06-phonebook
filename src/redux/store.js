@@ -4,8 +4,8 @@ import filterReducer from './filter-reducer';
 
 const store = configureStore({
   reducer: {
-    filterReducer,
-  },
+    filter: filterReducer
+    }
 })
 
 export default store;

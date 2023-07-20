@@ -5,7 +5,7 @@ import { addFilter } from 'redux/filter-reducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Filter () {
-  const filter = useSelector(state=> state.filter);
+  const filter = useSelector(state=> state.filter.filter);
   const dispatch = useDispatch();
 
   const onChange = (event) => {
