@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import filterReducer from './filter/filter-reducer';
+
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    filterReducer,
+  },
 })
 
 export default store;
