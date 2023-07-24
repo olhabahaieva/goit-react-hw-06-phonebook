@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Phonebook.module.css';
 import Section from 'components/Section';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/phonebook-reducer';
 
 function Phonebook() {
-  const contact = useSelector((state) => state.contact);
+  const [state, setState] = useState({
+    name: '',
+    number: '',
+  });
+
+  const { name, number } = state;
   const dispatch = useDispatch();
 
-  const handleNameChange = (e) => {
-    dispatch({ type: 'SET_NAME', payload: e.target.value });
-  };
-
-  const handleNumberChange = (e) => {
-    dispatch({ type: 'SET_NUMBER', payload: e.target.value });
+  const onChange = ({ target }) => {
+    const { name, value, type, checked } = target;
+    const newValue = type === "checkbox" ? checked : value;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: newValue,
+    }));
   };
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    dispatch(addContact(contact));
+    dispatch(addContact({ name, number }));
+    reset();
+  };
+
+  const reset = () => {
+    setState({
+      name: '',
+      number: '',
+    });
   };
 
   return (
@@ -33,8 +47,8 @@ function Phonebook() {
             <input
               type="text"
               name="name"
-              value={contact.name}
-              onChange={handleNameChange}
+              value={name}
+              onChange={onChange}
             />
             <label className={css.label} htmlFor="number">
               Number
@@ -42,8 +56,8 @@ function Phonebook() {
             <input
               type="tel"
               name="number"
-              value={contact.number}
-              onChange={handleNumberChange}
+              value={number}
+              onChange={onChange}
             />
 
             <button
