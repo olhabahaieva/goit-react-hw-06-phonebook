@@ -13,7 +13,7 @@ export const App = () => {
 
   const handlePhonebookClick = (inputName, inputNumber) => {
     const existingContact = contactsState.find(
-      (contact) => contact.name.toLowerCase() === inputName.toLowerCase()
+      (contacts) => contacts.name.toLowerCase() === inputName.toLowerCase()
     );
 
     if (existingContact) {
@@ -30,8 +30,8 @@ export const App = () => {
   };
 
   const handleContactDelete = (id) => {
-    setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
-    localStorage.setItem('PhonebookContacts', JSON.stringify(contactsState.filter((contact) => contact.id !== id)));
+    setContacts((prevContacts) => prevContacts.filter((contacts) => contacts.id !== id));
+    localStorage.setItem('PhonebookContacts', JSON.stringify(contactsState.filter((contacts) => contacts.id !== id)));
   };
 
   useEffect(() => {
@@ -42,8 +42,8 @@ export const App = () => {
     }
   }, []);
 
-  const filteredContacts = contactsState.filter((contact) =>
-    contact.name.toLowerCase().includes(filterState.toLowerCase())
+  const filteredContacts = contactsState.filter((contacts) =>
+    contacts.name.toLowerCase().includes(filterState.toLowerCase())
   );
 
   return (
