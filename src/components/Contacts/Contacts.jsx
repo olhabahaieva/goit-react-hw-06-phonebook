@@ -50,13 +50,8 @@ const Contacts = () => {
 };
 
 Contacts.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  )
+  contacts: PropTypes.string
+   
 };
 
 export default Contacts;
