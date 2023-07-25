@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './Phonebook.module.css';
 import Section from 'components/Section';
 import PropTypes from 'prop-types';
@@ -26,8 +26,16 @@ function Phonebook() {
   const handleButtonClick = (e) => {
     e.preventDefault();
     dispatch(addContact({ name, number }));
+    localStorage.setItem('PhonebookContacts', JSON.stringify(state));
     reset();
   };
+
+  useEffect(() => {
+    const savedContacts = JSON.parse(localStorage.getItem('PhonebookContacts'));
+    if (savedContacts) {
+      setState(savedContacts);
+    }
+  }, []);
 
   const reset = () => {
     setState({
