@@ -39,12 +39,18 @@ export const App = () => {
 
     if (savedContacts) {
       setContacts(JSON.parse(savedContacts));
+  //     const filteredContacts =  contactsState.filter((contacts) =>
+  //   contacts.name.toLowerCase().includes(filterState.toLowerCase())
+  // );
     }
   }, []);
 
-  const filteredContacts = contactsState.filter((contacts) =>
-    contacts.name.toLowerCase().includes(filterState.toLowerCase())
-  );
+  
+  
+
+
+ 
+
 
   return (
     <div
@@ -60,7 +66,7 @@ export const App = () => {
     >
       <Phonebook createContact={handlePhonebookClick} contacts={contactsState} />
       <Filter onChange={handleFilterClick} />
-      <Contacts contacts={filteredContacts} onDeleteContact={handleContactDelete} />
+      <Contacts onDeleteContact={handleContactDelete} />
     </div>
   );
 };
