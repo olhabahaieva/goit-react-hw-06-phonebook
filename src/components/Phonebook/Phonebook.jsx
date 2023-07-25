@@ -85,7 +85,7 @@ function Phonebook() {
 }
 
 Phonebook.propTypes = {
-  contacts: PropTypes.array,
+  state: PropTypes.array,
   createContact: PropTypes.func,
 };
 
