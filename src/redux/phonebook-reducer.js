@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadContactsFromLocalStorage = () =>{
+const loadContactsFromLocalStorage = () => {
   const savedContacts = localStorage.getItem('PhonebookContacts');
-  if(savedContacts){
+  if (savedContacts) {
     return JSON.parse(savedContacts);
   }
   return [];
@@ -18,7 +18,7 @@ export const contactsSlice = createSlice({
   initialState,
   reducers: {
     addContacts: (state, action) => {
-      state.contacts.push(action.payload);
+      state.contacts = [state.contacts, action.payload];
       localStorage.setItem('PhonebookContacts', JSON.stringify(state.contacts));
     },
     deleteContact: (state, action) => {
