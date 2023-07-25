@@ -10,6 +10,7 @@ function Phonebook() {
   const [state, setState] = useState({
     name: '',
     number: '',
+    id: nanoid(),
   });
 
   const { name, number } = state;
