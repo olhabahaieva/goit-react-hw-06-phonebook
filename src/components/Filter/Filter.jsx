@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Filter({ onChange }) {
   const handleInputChange = (e) => {
     const filterValue = e.target.value;
-    onChange(filterValue); // Pass the input value back to the onChange prop
+    onChange(filterValue); 
   };
 
   return (
@@ -14,7 +14,7 @@ function Filter({ onChange }) {
         Find contacts by name
       </label>
       <input
-        onChange={handleInputChange} // Use the handleInputChange function
+        onChange={handleInputChange}
         className={css.filterInput}
         type="search"
       />
