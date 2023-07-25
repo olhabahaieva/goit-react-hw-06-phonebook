@@ -18,19 +18,19 @@ function Phonebook() {
 
   const onChange = ({ target }) => {
     const { name, value, type, checked } = target;
-    const newValue = type === "checkbox" ? checked : value;
-    setState((prevState) => ({
+    const newValue = type === 'checkbox' ? checked : value;
+    setState(prevState => ({
       ...prevState,
       [name]: newValue,
     }));
   };
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = e => {
     e.preventDefault();
     const newContact = {
       name,
       number,
-      id: nanoid(), 
+      id: nanoid(),
     };
     dispatch(addContacts(newContact));
     localStorage.setItem('PhonebookContacts', JSON.stringify(state));
@@ -59,12 +59,7 @@ function Phonebook() {
             <label className={css.label} htmlFor="name">
               Name
             </label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={onChange}
-            />
+            <input type="text" name="name" value={name} onChange={onChange} />
             <label className={css.label} htmlFor="number">
               Number
             </label>
