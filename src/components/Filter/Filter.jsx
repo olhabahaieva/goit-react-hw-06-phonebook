@@ -1,16 +1,11 @@
 import React from 'react';
 import css from './Filter.module.css';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFilter } from 'redux/phonebook-reducer';
 
-function Filter() {
-  const filter = useSelector(state => state.filter.filter);
-  const dispatch = useDispatch();
-
-  const onChange = (event) => {
-    const filterValue = event.target.value;
-    dispatch(addFilter(filterValue));
+function Filter({ onChange }) {
+  const handleInputChange = (e) => {
+    const filterValue = e.target.value;
+    onChange(filterValue); // Pass the input value back to the onChange prop
   };
 
   return (
@@ -19,10 +14,9 @@ function Filter() {
         Find contacts by name
       </label>
       <input
-        onChange={onChange}
+        onChange={handleInputChange} // Use the handleInputChange function
         className={css.filterInput}
         type="search"
-        value={filter || ''}
       />
     </div>
   );
