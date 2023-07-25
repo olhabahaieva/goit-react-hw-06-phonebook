@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Phonebook from './Phonebook';
+import Phonebook from './Phonebook/Phonebook';
 import Contacts from './Contacts';
 import Filter from './Filter';
 
@@ -66,7 +66,7 @@ export const App = () => {
     >
       <Phonebook createContact={handlePhonebookClick} contacts={contactsState} />
       <Filter onChange={handleFilterClick} />
-      <Contacts onDeleteContact={handleContactDelete} />
+      <Contacts contacts={filterState} onDeleteContact={handleContactDelete} />
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import css from './Phonebook.module.css';
 import Section from 'components/Section';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/phonebook-reducer';
 import { nanoid } from 'nanoid';
+import { useEffect, useState } from 'react';
 
 function Phonebook() {
   const [state, setState] = useState({
