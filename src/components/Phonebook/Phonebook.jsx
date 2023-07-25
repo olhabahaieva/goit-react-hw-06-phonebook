@@ -33,7 +33,6 @@ function Phonebook() {
       id: nanoid(),
     };
     dispatch(addContacts(newContact));
-    // localStorage.setItem('PhonebookContacts', JSON.stringify(state));
     reset();
   };
 

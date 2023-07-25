@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Phonebook from './Phonebook/Phonebook';
 import Contacts from './Contacts';
 import Filter from './Filter';
@@ -33,22 +33,7 @@ export const App = () => {
     setContacts(prevContacts =>
       prevContacts.filter(contacts => contacts.id !== id)
     );
-    // localStorage.setItem(
-    //   'PhonebookContacts',
-    //   JSON.stringify(contactsState.filter(contacts => contacts.id !== id))
-    // );
   };
-
-  // useEffect(() => {
-  //   const savedContacts = localStorage.getItem('PhonebookContacts');
-
-  //   if (savedContacts) {
-  //     setContacts(JSON.parse(savedContacts));
-  //     //     const filteredContacts =  contactsState.filter((contacts) =>
-  //     //   contacts.name.toLowerCase().includes(filterState.toLowerCase())
-  //     // );
-  //   }
-  // }, []);
 
   return (
     <div
