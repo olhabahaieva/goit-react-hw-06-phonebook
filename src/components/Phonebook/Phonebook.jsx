@@ -3,7 +3,8 @@ import css from './Phonebook.module.css';
 import Section from 'components/Section';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/phonebook-reducer';
+import { addContacts } from 'redux/phonebook-reducer';
+
 
 function Phonebook() {
   const [state, setState] = useState({
@@ -25,7 +26,7 @@ function Phonebook() {
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+    dispatch(addContacts({ name, number }));
     localStorage.setItem('PhonebookContacts', JSON.stringify(state));
     reset();
   };

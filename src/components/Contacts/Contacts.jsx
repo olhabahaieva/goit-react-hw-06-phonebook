@@ -3,7 +3,8 @@ import css from './Contacts.module.css';
 import Section from 'components/Section';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contacts-reducer';
+import { deleteContact } from 'redux/phonebook-reducer';
+
 
 
 const Contacts = () => {

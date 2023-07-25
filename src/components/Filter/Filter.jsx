@@ -1,8 +1,8 @@
 import React from 'react';
 import css from './Filter.module.css';
 import PropTypes from 'prop-types';
-import { addFilter } from 'redux/filter-reducer';
 import { useDispatch, useSelector } from 'react-redux';
+import { addFilter } from 'redux/phonebook-reducer';
 
 function Filter() {
   const filter = useSelector(state => state.filter.filter);
