@@ -37,7 +37,7 @@ const Contacts = () => {
     <Section title="Contacts">
       <ul className={css.contacts}>
         {contacts.map((contact) => (
-          <li key={contact.id || '  '}>
+          <li key={contact.id || ''}>
             {contact.name} : {contact.number}
             <button onClick={() => handleDeleteClick(contact.id)} className={css.delete}>
               Delete
