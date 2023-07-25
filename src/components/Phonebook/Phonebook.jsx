@@ -37,13 +37,6 @@ function Phonebook() {
     reset();
   };
 
-  // useEffect(() => {
-  //   const savedContacts = JSON.parse(localStorage.getItem('PhonebookContacts'));
-  //   if (savedContacts) {
-  //     setState(savedContacts);
-  //   }
-  // }, []);
-
   const reset = () => {
     setState({
       name: '',
