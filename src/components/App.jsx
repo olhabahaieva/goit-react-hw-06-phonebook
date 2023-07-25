@@ -7,13 +7,13 @@ export const App = () => {
   const [contactsState, setContacts] = useState([]);
   const [filterState, setFilter] = useState('');
 
-  const handleFilterClick = (e) => {
+  const handleFilterClick = e => {
     setFilter(e.target.value);
   };
 
   const handlePhonebookClick = (inputName, inputNumber) => {
     const existingContact = contactsState.find(
-      (contacts) => contacts.name.toLowerCase() === inputName.toLowerCase()
+      contacts => contacts.name.toLowerCase() === inputName.toLowerCase()
     );
 
     if (existingContact) {
@@ -25,32 +25,30 @@ export const App = () => {
         number: inputNumber,
       };
       setContacts([...contactsState, newContact]);
-      localStorage.setItem('PhonebookContacts', JSON.stringify([...contactsState, newContact]));
+      // localStorage.setItem('PhonebookContacts', JSON.stringify([...contactsState, newContact]));
     }
   };
 
-  const handleContactDelete = (id) => {
-    setContacts((prevContacts) => prevContacts.filter((contacts) => contacts.id !== id));
-    localStorage.setItem('PhonebookContacts', JSON.stringify(contactsState.filter((contacts) => contacts.id !== id)));
+  const handleContactDelete = id => {
+    setContacts(prevContacts =>
+      prevContacts.filter(contacts => contacts.id !== id)
+    );
+    // localStorage.setItem(
+    //   'PhonebookContacts',
+    //   JSON.stringify(contactsState.filter(contacts => contacts.id !== id))
+    // );
   };
 
-  useEffect(() => {
-    const savedContacts = localStorage.getItem('PhonebookContacts');
+  // useEffect(() => {
+  //   const savedContacts = localStorage.getItem('PhonebookContacts');
 
-    if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
-  //     const filteredContacts =  contactsState.filter((contacts) =>
-  //   contacts.name.toLowerCase().includes(filterState.toLowerCase())
-  // );
-    }
-  }, []);
-
-  
-  
-
-
- 
-
+  //   if (savedContacts) {
+  //     setContacts(JSON.parse(savedContacts));
+  //     //     const filteredContacts =  contactsState.filter((contacts) =>
+  //     //   contacts.name.toLowerCase().includes(filterState.toLowerCase())
+  //     // );
+  //   }
+  // }, []);
 
   return (
     <div
@@ -64,7 +62,10 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <Phonebook createContact={handlePhonebookClick} contacts={contactsState} />
+      <Phonebook
+        createContact={handlePhonebookClick}
+        contacts={contactsState}
+      />
       <Filter onChange={handleFilterClick} />
       <Contacts contacts={filterState} onDeleteContact={handleContactDelete} />
     </div>

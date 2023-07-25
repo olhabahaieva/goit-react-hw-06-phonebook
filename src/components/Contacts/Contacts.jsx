@@ -11,22 +11,22 @@ const Contacts = () => {
 
   const handleDeleteClick = id => {
     dispatch(deleteContact(id));
-    handleDeleteContactFromLocalStorage(id);
+    // handleDeleteContactFromLocalStorage(id);
   };
 
-  const handleDeleteContactFromLocalStorage = id => {
-    const savedContacts = localStorage.getItem('PhonebookContacts');
-    if (savedContacts) {
-      const parsedContacts = JSON.parse(savedContacts);
-      const updatedContacts = parsedContacts.filter(
-        contact => contact.id !== id
-      );
-      localStorage.setItem(
-        'PhonebookContacts',
-        JSON.stringify(updatedContacts)
-      );
-    }
-  };
+  // const handleDeleteContactFromLocalStorage = id => {
+  //   const savedContacts = localStorage.getItem('PhonebookContacts');
+  //   if (savedContacts) {
+  //     const parsedContacts = JSON.parse(savedContacts);
+  //     const updatedContacts = parsedContacts.filter(
+  //       contact => contact.id !== id
+  //     );
+  //     localStorage.setItem(
+  //       'PhonebookContacts',
+  //       JSON.stringify(updatedContacts)
+  //     );
+  //   }
+  // };
 
   if (!Array.isArray(contacts) || contacts.length === 0) {
     return (
