@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/phonebook-reducer';
 import { nanoid } from 'nanoid';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function Phonebook() {
   const [state, setState] = useState({
@@ -37,12 +37,12 @@ function Phonebook() {
     reset();
   };
 
-  useEffect(() => {
-    const savedContacts = JSON.parse(localStorage.getItem('PhonebookContacts'));
-    if (savedContacts) {
-      setState(savedContacts);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedContacts = JSON.parse(localStorage.getItem('PhonebookContacts'));
+  //   if (savedContacts) {
+  //     setState(savedContacts);
+  //   }
+  // }, []);
 
   const reset = () => {
     setState({
