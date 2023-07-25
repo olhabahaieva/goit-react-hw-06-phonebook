@@ -1,16 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-// const loadContactsFromLocalStorage = () => {
-//   const savedContacts = localStorage.getItem('PhonebookContacts');
-//   if (savedContacts) {
-//     return JSON.parse(savedContacts);
-//   }
-//   return [];
-// };
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   contacts: [],
-  filter: ''
+  filter: '',
 };
 
 export const contactsSlice = createSlice({
@@ -19,13 +11,13 @@ export const contactsSlice = createSlice({
   reducers: {
     addContacts: (state, action) => {
       state.contacts = [state.contacts, action.payload];
-      // localStorage.setItem('PhonebookContacts', JSON.stringify(state.contacts));
     },
     deleteContact: (state, action) => {
-      state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
-      // localStorage.setItem('PhonebookContacts', JSON.stringify(state.contacts));
-    }
-  }
+      state.contacts = state.contacts.filter(
+        contact => contact.id !== action.payload
+      );
+    },
+  },
 });
 
 export const filterSlice = createSlice({
@@ -34,8 +26,8 @@ export const filterSlice = createSlice({
   reducers: {
     addFilter: (state, action) => {
       state.filter = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { addContacts, deleteContact } = contactsSlice.actions;
@@ -43,7 +35,7 @@ export const { addFilter } = filterSlice.actions;
 
 const rootReducer = {
   contacts: contactsSlice.reducer,
-  filter: filterSlice.reducer
+  filter: filterSlice.reducer,
 };
 
 export default rootReducer;
