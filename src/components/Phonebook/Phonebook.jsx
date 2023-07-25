@@ -86,7 +86,7 @@ function Phonebook() {
 
 Phonebook.propTypes = {
   contacts: PropTypes.array,
-  createContact: PropTypes.func.isRequired,
+  createContact: PropTypes.func,
 };
 
 export default Phonebook;

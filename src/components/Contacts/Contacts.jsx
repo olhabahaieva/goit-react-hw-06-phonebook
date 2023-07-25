@@ -56,7 +56,7 @@ Contacts.propTypes = {
       name: PropTypes.string,
       number: PropTypes.string,
     })
-  ).isRequired,
+  )
 };
 
 export default Contacts;
