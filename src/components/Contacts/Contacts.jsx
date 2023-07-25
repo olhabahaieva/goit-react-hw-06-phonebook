@@ -6,34 +6,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts-reducer';
 
 const Contacts = () => {
- const contacts = useSelector(state=> state.contacts.contacts);
- const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.contacts);
+  const dispatch = useDispatch();
 
   const handleDeleteClick = id => {
-   dispatch(deleteContact(id))
+    dispatch(deleteContact(id));
+    handleDeleteContactFromLocalStorage(id);
   };
 
-  if (contacts.length === 0) {
-    return null;
+  if (!Array.isArray(contacts) || contacts.length === 0) {
+    return (
+      <Section title="Contacts">
+        <p>No contacts to display.</p>
+      </Section>
+    );
   }
 
-  // const handleDeleteContactFromLocalStorage = id => {
-  //   const savedContacts = localStorage.getItem('PhonebookContacts');
-  //   if (savedContacts) {
-  //     const parsedContacts = JSON.parse(savedContacts);
-  //     const updatedContacts = parsedContacts.filter(
-  //       contact => contact.id !== id
-  //     );
-  //     setContacts(
-  //       localStorage.setItem(
-  //         'PhonebookContacts',
-  //         JSON.stringify(updatedContacts)
-  //       )
-  //     );
-  //   }
-  // };
-
-
+  const handleDeleteContactFromLocalStorage = id => {
+    const savedContacts = localStorage.getItem('PhonebookContacts');
+    if (savedContacts) {
+      const parsedContacts = JSON.parse(savedContacts);
+      const updatedContacts = parsedContacts.filter(
+        contact => contact.id !== id
+      );
+      localStorage.setItem(
+        'PhonebookContacts',
+        JSON.stringify(updatedContacts)
+      );
+    }
+  };
 
   return (
     <Section title="Contacts">
@@ -55,6 +56,7 @@ const Contacts = () => {
     </Section>
   );
 };
+
 Contacts.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
@@ -63,7 +65,6 @@ Contacts.propTypes = {
       number: PropTypes.string,
     })
   ).isRequired,
-  onDeleteContact: PropTypes.func
 };
 
 export default Contacts;

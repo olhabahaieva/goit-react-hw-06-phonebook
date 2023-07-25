@@ -24,12 +24,12 @@ export const App = () => {
         name: inputName,
         number: inputNumber,
       };
-      setContacts([...contactsState, newContact]);
+      setContacts((prevContacts) => [...prevContacts, newContact]);
     }
   };
 
   const handleContactDelete = (id) => {
-    setContacts(contactsState.filter((contact) => contact.id !== id));
+    setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
   };
 
   useEffect(() => {
