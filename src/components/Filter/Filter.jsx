@@ -1,12 +1,26 @@
 import React from 'react';
 import css from './Filter.module.css';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFilter } from 'redux/phonebook-reducer';
 
-function Filter({ onChange }) {
-  const handleInputChange = (e) => {
-    const filterValue = e.target.value;
-    onChange(filterValue); 
+function Filter() {
+  const contacts = useSelector(state => state.filter.filter);
+  const dispatch = useDispatch();
+
+
+  const handleInputChange = () => {
+    dispatch(addFilter(contacts));
   };
+  
+
+// const filterContacts = ()=> {
+//  if(filter){
+// contacts.filter(contact=> contact.name.toLowerCase().includes(filter.toLowerCase()))
+//  };
+
+//  return contacts;
+// }
 
   return (
     <div className={css.filter}>

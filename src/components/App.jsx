@@ -51,7 +51,7 @@ export const App = () => {
         createContact={handlePhonebookClick}
         contacts={contactsState}
       />
-      <Filter onChange={handleFilterClick} />
+      <Filter filter={filterState} onChange={handleFilterClick} />
       <Contacts contacts={filterState} onDeleteContact={handleContactDelete} />
     </div>
   );
