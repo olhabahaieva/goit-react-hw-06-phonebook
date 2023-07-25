@@ -24,12 +24,14 @@ export const App = () => {
         name: inputName,
         number: inputNumber,
       };
-      setContacts((prevContacts) => [...prevContacts, newContact]);
+      setContacts([...contactsState, newContact]);
+      localStorage.setItem('PhonebookContacts', JSON.stringify([...contactsState, newContact]));
     }
   };
 
   const handleContactDelete = (id) => {
     setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
+    localStorage.setItem('PhonebookContacts', JSON.stringify(contactsState.filter((contact) => contact.id !== id)));
   };
 
   useEffect(() => {
