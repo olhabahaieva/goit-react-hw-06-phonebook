@@ -4,8 +4,7 @@ import Section from 'components/Section';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/phonebook-reducer';
-import { nanoid } from 'nanoid'
-
+import { nanoid } from 'nanoid';
 
 function Phonebook() {
   const [state, setState] = useState({
@@ -27,7 +26,12 @@ function Phonebook() {
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    dispatch(addContacts({ name, number, id:nanoid() }));
+    const newContact = {
+      name,
+      number,
+      id: nanoid(), // Generate a unique id using nanoid()
+    };
+    dispatch(addContacts(newContact));
     localStorage.setItem('PhonebookContacts', JSON.stringify(state));
     reset();
   };
