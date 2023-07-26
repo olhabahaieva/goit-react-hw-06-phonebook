@@ -7,7 +7,7 @@ import { addFilter, deleteContact } from 'redux/phonebook-reducer';
 
 const Contacts = () => {
   const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.filter); // Get the filter state from Redux
+  const filter = useSelector(state => state.filter.filter); // Get the filter state from Redux
   const dispatch = useDispatch();
 
   const handleDeleteClick = id => {
@@ -15,9 +15,12 @@ const Contacts = () => {
   };
 
   // Filter the contacts based on the filter value
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredContacts = () =>{
+    const normalizaFilter = filter.toLowerCase();
+  return contacts.filter(contact=> 
+    contact.name.toLocaleLowerCase().includes(normalizaFilter)
+    );
+  }
 
   if (!Array.isArray(contacts) || contacts.length === 0) {
     return (
@@ -41,7 +44,7 @@ const Contacts = () => {
       </div>
 
       <ul className={css.contacts}>
-        {filteredContacts.map(contact => (
+        {filteredContacts().map(contact => (
           <li key={contact.id || ''}>
             {contact.name} : {contact.number}
             <button
