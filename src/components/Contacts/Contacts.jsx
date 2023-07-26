@@ -57,7 +57,7 @@ const Contacts = () => {
 };
 
 Contacts.propTypes = {
-  contacts: PropTypes.array,
+  contacts: PropTypes.func,
 };
 
 export default Contacts;
