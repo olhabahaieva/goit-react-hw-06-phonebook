@@ -4,12 +4,8 @@ import Contacts from './Contacts';
 
 export const App = () => {
   const [contactsState, setContacts] = useState([]);
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [filterState, setFilter] = useState('');
-
-  // const handleFilterClick = e => {
-  //   setFilter(e.target.value);
-  // };
 
   const getVisibleContacts = () => {
     const normalizaFilter = filterState.toLowerCase();
@@ -57,7 +53,11 @@ export const App = () => {
         createContact={handlePhonebookClick}
         contacts={contactsState}
       />
-      <Contacts filter={filterState} contacts={getVisibleContacts} onDeleteContact={handleContactDelete} />
+      <Contacts
+        filter={filterState}
+        contacts={getVisibleContacts}
+        onDeleteContact={handleContactDelete}
+      />
     </div>
   );
 };

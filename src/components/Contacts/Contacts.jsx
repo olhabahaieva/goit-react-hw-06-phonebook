@@ -1,20 +1,18 @@
 import React from 'react';
 import css from './Contacts.module.css';
 import Section from 'components/Section';
-// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFilter, deleteContact } from 'redux/phonebook-reducer';
 
 const Contacts = () => {
   const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.filter.filter); // Get the filter state from Redux
+  const filter = useSelector(state => state.filter.filter);
   const dispatch = useDispatch();
 
   const handleDeleteClick = id => {
     dispatch(deleteContact(id));
   };
 
-  // Filter the contacts based on the filter value
   const filteredContacts = () =>{
     const normalizaFilter = filter.toLowerCase();
   return contacts.filter(contact=> 
@@ -37,7 +35,7 @@ const Contacts = () => {
           Find contacts by name
         </label>
         <input
-          onChange={(e) => dispatch(addFilter(e.target.value))} // Dispatch the filter action directly with the input value
+          onChange={(e) => dispatch(addFilter(e.target.value))}
           className={css.filterInput}
           type="search"
         />
