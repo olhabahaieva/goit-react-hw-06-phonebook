@@ -5,10 +5,18 @@ import Filter from './Filter';
 
 export const App = () => {
   const [contactsState, setContacts] = useState([]);
+// eslint-disable-next-line
   const [filterState, setFilter] = useState('');
 
-  const handleFilterClick = e => {
-    setFilter(e.target.value);
+  // const handleFilterClick = e => {
+  //   setFilter(e.target.value);
+  // };
+
+  const getVisibleContacts = () => {
+    const normalizaFilter = filterState.toLowerCase();
+    return contactsState.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizaFilter)
+    );
   };
 
   const handlePhonebookClick = (inputName, inputNumber) => {
@@ -25,7 +33,6 @@ export const App = () => {
         number: inputNumber,
       };
       setContacts([...contactsState, newContact]);
-      // localStorage.setItem('PhonebookContacts', JSON.stringify([...contactsState, newContact]));
     }
   };
 
@@ -51,8 +58,8 @@ export const App = () => {
         createContact={handlePhonebookClick}
         contacts={contactsState}
       />
-      <Filter filter={filterState} onChange={handleFilterClick} />
-      <Contacts contacts={filterState} onDeleteContact={handleContactDelete} />
+      <Filter filter={filterState} contacts={getVisibleContacts} />
+      <Contacts contacts={getVisibleContacts()} onDeleteContact={handleContactDelete} />
     </div>
   );
 };

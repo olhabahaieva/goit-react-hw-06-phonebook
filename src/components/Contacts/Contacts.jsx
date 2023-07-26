@@ -40,8 +40,8 @@ const Contacts = () => {
   );
 };
 
-Contacts.propTypes = {
-  contacts: PropTypes.string,
-};
+// Contacts.propTypes = {
+//   contacts: PropTypes.string,
+// };
 
 export default Contacts;
