@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Phonebook from './Phonebook/Phonebook';
 import Contacts from './Contacts';
-import Filter from './Filter';
 
 export const App = () => {
   const [contactsState, setContacts] = useState([]);
@@ -58,8 +57,7 @@ export const App = () => {
         createContact={handlePhonebookClick}
         contacts={contactsState}
       />
-      <Filter filter={filterState} contacts={getVisibleContacts} />
-      <Contacts contacts={getVisibleContacts()} onDeleteContact={handleContactDelete} />
+      <Contacts filter={filterState} contacts={getVisibleContacts()} onDeleteContact={handleContactDelete} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import css from './Contacts.module.css';
 import Section from 'components/Section';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/phonebook-reducer';
+import { addFilter, deleteContact } from 'redux/phonebook-reducer';
 
 const Contacts = () => {
   const contacts = useSelector(state => state.contacts.contacts);
@@ -11,6 +11,10 @@ const Contacts = () => {
 
   const handleDeleteClick = id => {
     dispatch(deleteContact(id));
+  };
+
+  const handleInputChange = () => {
+    dispatch(addFilter(contacts));
   };
 
   if (!Array.isArray(contacts) || contacts.length === 0) {
@@ -23,6 +27,18 @@ const Contacts = () => {
 
   return (
     <Section title="Contacts">
+
+<div className={css.filter}>
+      <label className={css.label} htmlFor="search">
+      </label>
+      <input
+        onChange={handleInputChange}
+        className={css.filterInput}
+        type="search"
+      />
+    </div>
+
+
       <ul className={css.contacts}>
         {contacts.map(contact => (
           <li key={contact.id || ''}>
@@ -40,8 +56,8 @@ const Contacts = () => {
   );
 };
 
-// Contacts.propTypes = {
-//   contacts: PropTypes.string,
-// };
+Contacts.propTypes = {
+  contacts: PropTypes.array,
+};
 
 export default Contacts;
